@@ -5,11 +5,7 @@
     if($conexao)
     {
 
-        $requestData=$_REQUEST;
-
-        $id=isset($requestData['idcategoria'])?$requestData['idcategoria']:''
-
-        $sql="SELECT * FROM categorias WHERE idcategoria=$id";
+        $sql="SELECT idcategoria, nome FROM CATEGORIAS WHERE ativo='S' ";
 
         $resultado=mysqli_query($conexao, $sql); 
 
@@ -20,7 +16,7 @@
             while($linha=mysqli_fetch_assoc($resultado))
             {
 
-                $dadosCategoria=array_map('utf8_encode', $linha)
+                $dadosCategoria[]=array_map('utf8_encode', $linha)
 
             }
 
